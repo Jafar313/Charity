@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="07/21/2020 17:05:41" ReportInfo.Modified="08/18/2020 14:15:06" ReportInfo.CreatorVersion="2020.2.13.0">
+  <Dictionary>
+    <BusinessObjectDataSource Name="Title" ReferenceName="Title" DataType="System.Collections.Generic.List`1[[IJCharityDotNetFramwork.Core.ViewModels.SaleTitleReports, IJCharityDotNetFramwork.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]" Enabled="true">
+      <Column Name="TarikhAval" DataType="System.String"/>
+      <Column Name="TarikhAkhar" DataType="System.String"/>
+      <Column Name="FullNameMantaghe" DataType="System.String"/>
+      <Column Name="MantagheCheckState" DataType="System.Boolean" BindableControl="CheckBox"/>
+      <Column Name="_enumNoeKhanevade" DataType="IJCharityDotNetFramwork.Data.Models.MyEnumTypes+NoeKhanevade, IJCharityDotNetFramwork.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"/>
+      <Column Name="NoeKhanevade" DataType="System.String"/>
+    </BusinessObjectDataSource>
+    <BusinessObjectDataSource Name="DataSource2" ReferenceName="DataSource2" DataType="System.Collections.Generic.List`1[[IJCharityDotNetFramwork.Core.ViewModels.SaleReportDetailByNoeKhanevadeViewModel, IJCharityDotNetFramwork.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]" Enabled="true">
+      <Column Name="KodTafzili" DataType="System.Nullable`1[[System.Double, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"/>
+      <Column Name="TedadKhoroji" DataType="System.Double"/>
+      <Column Name="KodKala" DataType="System.Decimal"/>
+      <Column Name="NameKala" DataType="System.String"/>
+      <Column Name="TozihatFaktor" DataType="System.String"/>
+      <Column Name="FullNameKhanevade" DataType="System.String"/>
+      <Column Name="GheimatForosh" DataType="System.Double"/>
+      <Column Name="Arzesh" DataType="System.Double"/>
+      <Column Name="_enumNoeKhanevade" DataType="IJCharityDotNetFramwork.Data.Models.MyEnumTypes+NoeKhanevade, IJCharityDotNetFramwork.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"/>
+      <Column Name="NoeKhanevade" DataType="System.String"/>
+      <Column Name="Mantaghe" DataType="System.String"/>
+      <Column Name="Vahed" DataType="System.String"/>
+      <Column Name="TarikhKhoroj" DataType="System.Int32"/>
+    </BusinessObjectDataSource>
+    <BusinessObjectDataSource Name="DataSource1" ReferenceName="DataSource1" DataType="System.Collections.Generic.List`1[[IJCharityDotNetFramwork.Core.ViewModels.NameShomareParvandeViewModel, IJCharityDotNetFramwork.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]" Enabled="true">
+      <Column Name="FullNameKhanevade" DataType="System.String"/>
+      <Column Name="ShomareParvande" DataType="System.Nullable`1[[System.Double, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"/>
+      <Column Name="TotalArzesh" DataType="System.Int32"/>
+    </BusinessObjectDataSource>
+    <Relation Name="DataSource1_DataSource2" ParentDataSource="DataSource1" ChildDataSource="DataSource2" ParentColumns="ShomareParvande&#13;&#10;FullNameKhanevade" ChildColumns="KodTafzili&#13;&#10;FullNameKhanevade" Enabled="true"/>
+    <Total Name="Total" Expression="[DataSource2.Arzesh]" Evaluator="Data2" PrintOn="ReportSummary1"/>
+    <Total Name="TotalByKhanevade" Expression="[DataSource2.Arzesh]" Evaluator="Data2" PrintOn="DataFooter2" ResetOnReprint="true"/>
+  </Dictionary>
+  <ReportPage Name="Page1" Watermark.Font="Arial, 60pt">
+    <ReportTitleBand Name="ReportTitle1" Width="718.2" Height="66.15" Fill="Glass" Fill.Color="MediumSpringGreen" Fill.Blend="0.2" Fill.Hatch="true">
+      <TextObject Name="Text11" Left="226.8" Width="264.6" Height="28.35" Text="موسسه خیریه امام جواد علیه السلام" HorzAlign="Center" VertAlign="Center" RightToLeft="true" WordWrap="false" Font="B Yekan, 14pt"/>
+      <TextObject Name="Text16" Left="226.8" Top="37.8" Width="264.6" Height="28.35" Text="گزارش خروجی کالا از کلیه انبارها" HorzAlign="Center" VertAlign="Center" RightToLeft="true" WordWrap="false" Font="B Yekan, 14pt"/>
+    </ReportTitleBand>
+    <PageHeaderBand Name="PageHeader1" Top="70.15" Width="718.2" Height="85.05">
+      <TextObject Name="Text17" Left="647.32" Top="5.45" Width="66.15" Height="28.35" Text="از تاریخ:" HorzAlign="Right" VertAlign="Center" RightToLeft="true" WordWrap="false" Font="B Yekan, 14pt"/>
+      <TextObject Name="Text18" Left="220.93" Top="5.45" Width="66.15" Height="28.35" Text="تا تاریخ:" VertAlign="Center" RightToLeft="true" WordWrap="false" Font="B Yekan, 14pt"/>
+      <TextObject Name="Text19" Left="647.32" Top="43.25" Width="66.15" Height="28.35" Text="منطقه:" HorzAlign="Right" VertAlign="Center" RightToLeft="true" WordWrap="false" Font="B Yekan, 14pt"/>
+      <TextObject Name="Text20" Left="220.93" Top="43.25" Width="94.5" Height="28.35" Text="نوع خانواده:" VertAlign="Center" RightToLeft="true" WordWrap="false" Font="B Yekan, 14pt"/>
+      <TextObject Name="Text21" Left="5.45" Top="43.09" Width="75.6" Height="28.35" Text="صفحه [Page#]" HorzAlign="Center" VertAlign="Center" RightToLeft="true" WordWrap="false" Font="B Yekan, 14pt"/>
+      <TextObject Name="Text22" Left="515.02" Top="5.45" Width="132.3" Height="28.35" Text="[Title.TarikhAval]" VertAlign="Center" RightToLeft="true" WordWrap="false" Font="B Yekan, 14pt"/>
+      <TextObject Name="Text23" Left="420.52" Top="43.25" Width="226.8" Height="28.35" Text="[Title.FullNameMantaghe]" VertAlign="Center" RightToLeft="true" WordWrap="false" Font="B Yekan, 14pt"/>
+      <TextObject Name="Text24" Left="69.73" Top="5.45" Width="151.2" Height="28.35" Text="[Title.TarikhAkhar]" VertAlign="Center" RightToLeft="true" WordWrap="false" Font="B Yekan, 14pt"/>
+      <TextObject Name="Text25" Left="98.08" Top="43.25" Width="122.85" Height="28.35" Text="[Title.NoeKhanevade]" VertAlign="Center" RightToLeft="true" WordWrap="false" Font="B Yekan, 14pt"/>
+    </PageHeaderBand>
+    <DataBand Name="Data1" Top="159.2" Width="718.2" Height="52.92" DataSource="DataSource1" KeepTogether="true" KeepDetail="true">
+      <TextObject Name="Text29" Left="4.73" Width="642.6" Height="52.92" Border.Lines="All" Fill.Color="192, 255, 192" Text=" نام کامل سرپرست: [DataSource1.FullNameKhanevade] شماره پرونده: [DataSource1.ShomareParvande]" VertAlign="Center" RightToLeft="true" Font="B Yekan, 13pt"/>
+      <TextObject Name="Text30" Left="647.32" Top="18.9" Width="66.15" Height="34.02" Border.Lines="All" Fill.Color="192, 255, 192" Text="[Row#]" HorzAlign="Center" VertAlign="Center" RightToLeft="true" WordWrap="false" Font="B Yekan, 13pt" Trimming="EllipsisCharacter"/>
+      <TextObject Name="Text36" Left="647.32" Width="66.15" Height="24.57" Border.Lines="Left, Right, Top" Fill.Color="192, 255, 192" Text="ردیف" HorzAlign="Center" VertAlign="Center" RightToLeft="true" WordWrap="false" Font="B Yekan, 13pt" Trimming="EllipsisCharacter"/>
+      <DataBand Name="Data2" Top="248.47" Width="718.2" Height="49.14" DataSource="DataSource2" KeepTogether="true">
+        <TextObject Name="Text1" Left="4.73" Width="132.3" Height="49.14" Border.Lines="All" Text="[DataSource2.Arzesh]" Format="Number" Format.UseLocale="true" Format.DecimalDigits="0" HorzAlign="Center" VertAlign="Center" RightToLeft="true" WordWrap="false" Font="B Yekan, 12pt" Trimming="EllipsisCharacter"/>
+        <TextObject Name="Text4" Left="335.48" Width="217.35" Height="49.14" Border.Lines="All" Text="[DataSource2.NameKala]" VertAlign="Center" RightToLeft="true" Font="B Yekan, 12pt"/>
+        <TextObject Name="Text5" Left="647.32" Width="66.15" Height="49.14" Border.Lines="All" Text="[DataSource2.KodKala]" HorzAlign="Center" VertAlign="Center" RightToLeft="true" WordWrap="false" Font="B Yekan, 12pt" Trimming="EllipsisCharacter"/>
+        <TextObject Name="Text2" Left="137.03" Width="75.6" Height="49.14" Border.Lines="All" Text="[DataSource2.GheimatForosh]" Format="Number" Format.UseLocale="true" Format.DecimalDigits="0" HorzAlign="Center" VertAlign="Center" RightToLeft="true" WordWrap="false" Font="B Yekan, 12pt" Trimming="EllipsisCharacter"/>
+        <TextObject Name="Text3" Left="212.63" Width="66.15" Height="49.14" Border.Lines="All" Text="[DataSource2.Vahed]" HorzAlign="Center" VertAlign="Center" RightToLeft="true" Font="B Yekan, 12pt"/>
+        <TextObject Name="Text12" Left="278.78" Width="56.7" Height="49.14" Border.Lines="All" Text="[DataSource2.TedadKhoroji]" Format="Number" Format.UseLocale="true" Format.DecimalDigits="1" HorzAlign="Center" VertAlign="Center" RightToLeft="true" WordWrap="false" Font="B Yekan, 12pt" Trimming="EllipsisCharacter"/>
+        <TextObject Name="Text34" Left="552.82" Width="94.5" Height="49.14" Border.Lines="All" Text="[DataSource2.TarikhKhoroj]" HorzAlign="Center" VertAlign="Center" RightToLeft="true" WordWrap="false" Font="B Yekan, 12pt" Trimming="EllipsisCharacter"/>
+        <DataHeaderBand Name="DataHeader2" Top="216.12" Width="718.2" Height="28.35" KeepWithData="true" RepeatOnEveryPage="true">
+          <TextObject Name="Text10" Left="647.32" Width="66.15" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="کد کالا" HorzAlign="Center" VertAlign="Center" RightToLeft="true" Font="B Yekan, 12pt"/>
+          <TextObject Name="Text6" Left="4.73" Width="132.3" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="ارزش (تومان)" HorzAlign="Center" VertAlign="Center" RightToLeft="true" Font="B Yekan, 12pt"/>
+          <TextObject Name="Text7" Left="137.03" Width="75.6" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="فی" HorzAlign="Center" VertAlign="Center" RightToLeft="true" Font="B Yekan, 12pt"/>
+          <TextObject Name="Text8" Left="212.63" Width="66.15" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="واحد" HorzAlign="Center" VertAlign="Center" RightToLeft="true" Font="B Yekan, 12pt"/>
+          <TextObject Name="Text9" Left="335.48" Width="217.35" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="نام کالا یا خدمات" HorzAlign="Center" VertAlign="Center" RightToLeft="true" Font="B Yekan, 12pt"/>
+          <TextObject Name="Text13" Left="278.78" Width="56.7" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="تعداد" HorzAlign="Center" VertAlign="Center" RightToLeft="true" Font="B Yekan, 12pt"/>
+          <TextObject Name="Text35" Left="552.82" Width="94.5" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="تاریخ حواله" HorzAlign="Center" VertAlign="Center" RightToLeft="true" Font="B Yekan, 12pt"/>
+        </DataHeaderBand>
+        <DataFooterBand Name="DataFooter2" Top="301.61" Width="718.2" Height="37.8" KeepWithData="true">
+          <TextObject Name="Text33" Left="4.73" Width="207.9" Height="37.8" Border.Lines="Left, Top, Bottom" Fill.Color="Gainsboro" Text="[TotalByKhanevade] تومان" Format="Number" Format.UseLocale="true" Format.DecimalDigits="0" HorzAlign="Right" VertAlign="Center" RightToLeft="true" WordWrap="false" Font="B Yekan, 13pt, style=Bold" Trimming="EllipsisCharacter"/>
+          <TextObject Name="Text32" Left="212.63" Width="500.85" Height="37.8" Border.Lines="Right, Top, Bottom" Fill.Color="Gainsboro" Text="جمع کل ارزش کالا و خدمات ارائه شده به خانواده" VertAlign="Center" RightToLeft="true" Font="B Yekan, 13pt, style=Bold"/>
+        </DataFooterBand>
+      </DataBand>
+    </DataBand>
+    <ReportSummaryBand Name="ReportSummary1" Top="343.41" Width="718.2" Height="37.8">
+      <TextObject Name="Text14" Left="4.73" Width="274.05" Height="37.8" Border.Lines="Left, Top, Bottom" Text="[Total] تومان" Format="Number" Format.UseLocale="true" Format.DecimalDigits="0" HorzAlign="Right" VertAlign="Center" RightToLeft="true" WordWrap="false" Font="B Yekan, 16pt, style=Bold" Trimming="EllipsisCharacter"/>
+      <TextObject Name="Text15" Left="278.77" Width="434.7" Height="37.8" Border.Lines="Right, Top, Bottom" Text="جمع کل ارزش کالا و خدمات:" VertAlign="Center" RightToLeft="true" Font="B Yekan, 16pt, style=Bold"/>
+    </ReportSummaryBand>
+  </ReportPage>
+</Report>
